@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>ایران باستان</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Tahoma', sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #home {
+      background-image: url('images/takht-jamshid.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    #home h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    #home p {
+      font-size: 20px;
+    }
+
+    #article, #gallery {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    #gallery {
+      text-align: center;
+    }
+
+    #gallery img {
+      width: 300px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #666;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">خانه</a></li>
+        <li><a href="#article">مقاله</a></li>
+        <li><a href="#gallery">گالری</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h1>ایران؛ سرزمین تمدن</h1>
+    <p>خوش آمدید به دنیای شکوه ایران باستان</p>
+  </section>
+
+  <section id="article">
+    <h2>تمدن ایران باستان</h2>
+    <p>
+      ایران یکی از قدیمی‌ترین تمدن‌های جهان است. از دوران ایلامی‌ها تا هخامنشیان، این سرزمین همواره مرکز فرهنگ و هنر بوده است. آثار تاریخی مانند تخت جمشید، نقش رستم و شهر سوخته گواهی بر شکوه این تمدن هستند.
+    </p>
+    <p>
+      زبان فارسی، شعرای بزرگی چون سعدی و مولانا، و معماری بی‌نظیر ایرانی، ایران را به یکی از مهم‌ترین مراکز فرهنگی جهان تبدیل کرده‌اند.
+    </p>
+  </section>
+
+  <section id="gallery">
+    <h2>گالری آثار تاریخی</h2>
+    <img src="images/takht-jamshid.jpg" alt="تخت جمشید">
+    <img src="images/persian-art.jpg" alt="هنر ایرانی">
+    <img src="images/iran-map.jpg" alt="نقشه ایران باستان">
+  </section>
+
+  <footer>
+    <p>© 2025 | طراحی شده توسط شما</p>
+  </footer>
+
+  <!-- اسکرول نرم -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+  <!-- انیمیشن ورود بخش‌ها -->
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
